@@ -15,16 +15,29 @@
     "languages": [
       {
         "id": "kina",
-        "aliases": ["Kina", "kina"],
-        "extensions": [".kin"],
+        "aliases": [
+          "Kina",
+          "kina"
+        ],
+        "extensions": [
+          ".kin"
+        ],
         "configuration": "./language-configuration.json"
+      }
+    ],
+    "semanticTokenTypes": [
+      {
+        "id": "keyword"
+      },
+      {
+        "id": "function"
       }
     ]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile": "esbuild src/extension.ts src/server.ts --bundle --outdir=out --external:vscode --format=cjs --platform=node",
+    "watch": "esbuild src/extension.ts src/server.ts --bundle --outdir=out --external:vscode --format=cjs --platform=node --watch",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src",
     "test": "vscode-test"
@@ -35,6 +48,7 @@
     "@types/vscode": "^1.125.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.0.0",
+    "esbuild": "^0.28.1",
     "eslint": "^10.5.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.1"
@@ -44,6 +58,7 @@
     "serialize-javascript": "^7.0.6"
   },
   "dependencies": {
+    "@kina-lang/lexer": "workspace:*",
     "vscode-languageclient": "^10.0.1",
     "vscode-languageserver": "^10.0.1",
     "vscode-languageserver-textdocument": "^1.0.12"
