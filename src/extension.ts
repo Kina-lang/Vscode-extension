@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   client = new LanguageClient(
     "kinaLanguageServer",
-    "Kina Language Server",
+    "Kina LSP",
     serverOptions,
     clientOptions,
   );

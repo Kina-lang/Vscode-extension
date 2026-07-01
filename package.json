@@ -24,14 +24,6 @@
         ],
         "configuration": "./language-configuration.json"
       }
-    ],
-    "semanticTokenTypes": [
-      {
-        "id": "keyword"
-      },
-      {
-        "id": "function"
-      }
     ]
   },
   "scripts": {
