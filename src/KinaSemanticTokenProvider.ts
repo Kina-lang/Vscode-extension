@@ -31,6 +31,7 @@ export class KinaSemanticTokenProvider {
     // TODO: Read that from the parsed document
     fileName: "anonymous",
     rootDir: "/anonymous",
+    skipUnknownTokens: true,
   });
 
   private static readonly TOKEN_TYPE_MAP: {
@@ -86,10 +87,12 @@ export class KinaSemanticTokenProvider {
     let tokens: BaseToken[] = [];
     try {
       tokens = this.lexer.tokenize(content);
-    } catch (e) {}
+    } catch (e) {
+      console.error("Error while lexing document:", e);
+    }
 
     // Filter out tokens that don't map to a valid semantic token type (i.e. map to -1)
-    const filteredTokens = tokens.filter(token => {
+    const filteredTokens = tokens.filter((token) => {
       const type = KinaSemanticTokenProvider.TOKEN_TYPE_MAP[token.kind];
       return type !== undefined && type !== -1;
     });
@@ -154,9 +157,12 @@ export class KinaSemanticTokenProvider {
     for (let line = startLine; line <= endLine; line++) {
       const content = tokenValueLines[line - startLine];
       const lineDelta = line - lastLine;
-      const charDelta = line === startLine
-        ? (lineDelta === 0 ? startChar - currentLastChar : startChar)
-        : 0;
+      const charDelta =
+        line === startLine
+          ? lineDelta === 0
+            ? startChar - currentLastChar
+            : startChar
+          : 0;
       const tokenLength = content.length;
 
       lines.push([
