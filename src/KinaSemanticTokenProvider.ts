@@ -1,9 +1,4 @@
-import {
-  BaseToken,
-  CommentToken,
-  KinaLexer,
-  TokenKind,
-} from "@kina-lang/lexer";
+import { BaseToken, KinaLexer, TokenKind } from "@kina-lang/lexer";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
 const TOKEN_TYPES = [
@@ -42,6 +37,22 @@ export class KinaSemanticTokenProvider {
     [TokenKind.KeywordExtern]: EKinaSemanticTokenType.Keyword,
     [TokenKind.KeywordVariable]: EKinaSemanticTokenType.Keyword,
     [TokenKind.KeywordMutable]: EKinaSemanticTokenType.Keyword,
+    [TokenKind.KeywordIf]: EKinaSemanticTokenType.Keyword,
+    [TokenKind.KeywordElse]: EKinaSemanticTokenType.Keyword,
+    [TokenKind.OperatorPlus]: -1,
+    [TokenKind.OperatorMinus]: -1,
+    [TokenKind.OperatorMultiply]: -1,
+    [TokenKind.OperatorDivide]: -1,
+    [TokenKind.OperatorModulo]: -1,
+    [TokenKind.OperatorNot]: -1,
+    [TokenKind.OperatorEqual]: -1,
+    [TokenKind.OperatorNotEqual]: -1,
+    [TokenKind.OperatorLessThan]: -1,
+    [TokenKind.OperatorLessThanOrEqual]: -1,
+    [TokenKind.OperatorGreaterThan]: -1,
+    [TokenKind.OperatorGreaterThanOrEqual]: -1,
+    [TokenKind.OperatorAnd]: -1,
+    [TokenKind.OperatorOr]: -1,
     [TokenKind.DirectiveInclude]: EKinaSemanticTokenType.Macro,
     [TokenKind.Identifier]: EKinaSemanticTokenType.Variable,
     [TokenKind.TypeVoid]: EKinaSemanticTokenType.Type,
