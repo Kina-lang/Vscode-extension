@@ -63,6 +63,8 @@ export class KinaSemanticTokenProvider {
     [TokenKind.TypeVoid]: EKinaSemanticTokenType.Type,
     [TokenKind.TypeInt]: EKinaSemanticTokenType.Type,
     [TokenKind.TypeBool]: EKinaSemanticTokenType.Type,
+    [TokenKind.TypeString]: EKinaSemanticTokenType.Type,
+    [TokenKind.TypePtr]: EKinaSemanticTokenType.Type,
     [TokenKind.Comment]: EKinaSemanticTokenType.Comment,
     [TokenKind.LiteralBoolean]: EKinaSemanticTokenType.Keyword,
     [TokenKind.LiteralInteger]: EKinaSemanticTokenType.Number,
