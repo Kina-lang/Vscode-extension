@@ -43,6 +43,7 @@ export class KinaSemanticTokenProvider {
     [TokenKind.KeywordFrom]: EKinaSemanticTokenType.Keyword,
     [TokenKind.KeywordExport]: EKinaSemanticTokenType.Keyword,
     [TokenKind.KeywordAs]: EKinaSemanticTokenType.Keyword,
+    [TokenKind.KeywordStruct]: EKinaSemanticTokenType.Keyword,
     [TokenKind.OperatorAssign]: -1,
     [TokenKind.OperatorPlus]: -1,
     [TokenKind.OperatorMinus]: -1,
